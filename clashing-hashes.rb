@@ -13,7 +13,7 @@ get '/' do
 end
 
 post '/twitter' do
-  Twitter.
+  #  Twitter.
   erb :results
 end
 
