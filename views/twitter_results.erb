@@ -1,0 +1,15 @@
+<h1>Hello</h1>
+<h3>First Hash</h3>
+<p><%= @first %></p>
+
+<h3>Second Hash</h3>
+<p><%= @second %></p>
+
+<h3>The winner of this battle is...</h3>
+<p></p>
+
+
+<% @tweets.each do |tweet| %>
+	<h3>The Author is <%= tweet.author %> </h3>
+	<p>Status: <%= tweet.status %> </p>
+<% end %>
