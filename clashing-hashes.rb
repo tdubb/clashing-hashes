@@ -4,22 +4,16 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'twitter'
 
-require_relative 'lib/twitter'
+require_relative 'lib/follower_clash'
 
 get '/' do
-  
-  @name = "Mike"
-  @show_description = true
   erb :index
 end
 
 post '/twitter' do
+  @user1 = FollowerClash::User.new(params["login-a"])
+  @user2 = FollowerClash::User.new(params["login-b"])
+  @result = FollowerClash::Comparer.new(@user1, @user2).compare
   erb :results
-end
-
-get '/test' do
-  t = Tweets.new
-  search = t.search("%23makersquare")
-  search.attrs[:statuses].count
 end
 

@@ -1,4 +1,5 @@
 require_relative '../lib/follower_clash'
+require 'pry'
 
 describe FollowerClash::Comparer do
   describe '#compare' do
@@ -9,8 +10,10 @@ describe FollowerClash::Comparer do
 
         allow(user1).to receive(:followers).and_return(10)
         allow(user2).to receive(:followers).and_return(1)    
+        allow(user1).to receive(:login).and_return("ornellasmike")
+        allow(user2).to receive(:login).and_return("techpeace")
 
-        expect(FollowerClash::Comparer.new(user1, user2).compare).to eq(user1)   
+        expect(FollowerClash::Comparer.new(user1, user2).compare).to eq(user1.login)   
       end
     end
 
@@ -23,7 +26,7 @@ end
 describe FollowerClash::User do
   describe '#followers' do
     it 'returns the number of followers from the Twitter API' do
-      Twitter::Client.stub_chain(:new, :user, :followers_count).and_return(20)
+      Twitter::Client.stub_chain(:new, :configure, :user, :followers_count).and_return(20)
 
       expect(FollowerClash::User.new('ornellasmike').followers).to eq(20)
     end
