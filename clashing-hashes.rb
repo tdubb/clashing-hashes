@@ -4,5 +4,16 @@ require 'sinatra'
 require 'sinatra/reloader'
 
 get '/' do
-  'hello world'
+  '<h1>hello Tyler</h1>'
+@name = "Tyler"
+
+@show_description = false
+
+
+
+erb :index
+end
+
+post '/twitter' do
+
 end
