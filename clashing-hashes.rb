@@ -1,3 +1,4 @@
+require 'twitter'
 require 'rubygems'
 require 'bundler/setup'
 require 'sinatra'
@@ -16,4 +17,5 @@ end
 
 post '/twitter' do
 
+erb :twitter
 end
